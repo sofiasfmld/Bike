@@ -32,19 +32,22 @@ if menu_choice == "Home":
 elif menu_choice == "Tren Penyewaan Sepeda":
     st.header("Tren Penyewaan Sepeda Sepanjang Tahun")
     monthly_rentals = main_data.groupby(main_data['dteday'].dt.month)['cnt'].sum()
+    monthly_rentals.index = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     st.line_chart(monthly_rentals)
 
 # Page 2: Pengaruh Cuaca
 elif menu_choice == "Pengaruh Cuaca":
     st.header("Pengaruh Cuaca terhadap Penyewaan Sepeda")
     weather_counts = main_data.groupby('weathersit')['cnt'].sum()
-    st.bar_chart(weather_counts)
+    weather_labels = ['Cerah', 'Kabut', 'Hujan Ringan', 'Hujan Berat']
+    st.bar_chart(weather_counts.rename(weather_labels))
 
 # Page 3: Penyewaan Hari Libur
 elif menu_choice == "Penyewaan Hari Libur":
     st.header("Perbandingan Penyewaan pada Hari Libur vs Hari Biasa")
     holiday_counts = main_data.groupby('holiday')['cnt'].sum()
-    st.bar_chart(holiday_counts)
+    holiday_labels = ['Biasa', 'Libur']
+    st.bar_chart(holiday_counts.rename(holiday_labels))
 
 # Page 4: Proporsi Pengguna
 elif menu_choice == "Proporsi Pengguna":
