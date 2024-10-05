@@ -1,6 +1,5 @@
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 import streamlit as st
 
 # Load data
@@ -33,52 +32,25 @@ if menu_choice == "Home":
 elif menu_choice == "Tren Penyewaan Sepeda":
     st.header("Tren Penyewaan Sepeda Sepanjang Tahun")
     monthly_rentals = main_data.groupby(main_data['dteday'].dt.month)['cnt'].sum()
-
-    fig, ax = plt.subplots(figsize=(10, 6))
-    ax.plot(monthly_rentals.index, monthly_rentals.values, marker='o', linestyle='-', color='blue')
-    ax.set_title('Jumlah Penyewaan Sepeda per Bulan')
-    ax.set_xlabel('Bulan')
-    ax.set_ylabel('Jumlah Penyewaan')
-    ax.set_xticks(monthly_rentals.index)
-    ax.grid()
-    st.pyplot(fig)
+    st.line_chart(monthly_rentals)  # Menggunakan Streamlit untuk grafik garis
 
 # Page 2: Pengaruh Cuaca
 elif menu_choice == "Pengaruh Cuaca":
     st.header("Pengaruh Cuaca terhadap Penyewaan Sepeda")
     weather_counts = main_data.groupby('weathersit')['cnt'].sum()
-
-    fig, ax = plt.subplots(figsize=(10, 6))
-    weather_counts.plot(kind='bar', color='lightblue', ax=ax)
-    ax.set_title('Pengaruh Jenis Cuaca terhadap Jumlah Penyewaan Sepeda')
-    ax.set_xlabel('Jenis Cuaca')
-    ax.set_ylabel('Jumlah Penyewaan')
-    ax.set_xticklabels(['Clear', 'Mist', 'Light Rain', 'Heavy Rain'], rotation=0)
-    st.pyplot(fig)
+    st.bar_chart(weather_counts)  # Menggunakan Streamlit untuk grafik batang
 
 # Page 3: Penyewaan Hari Libur
 elif menu_choice == "Penyewaan Hari Libur":
     st.header("Perbandingan Penyewaan pada Hari Libur vs Hari Biasa")
     holiday_counts = main_data.groupby('holiday')['cnt'].sum()
-
-    fig, ax = plt.subplots(figsize=(8, 5))
-    holiday_counts.plot(kind='bar', color='orange', ax=ax)
-    ax.set_title('Jumlah Penyewaan Sepeda pada Hari Libur vs Hari Biasa')
-    ax.set_xlabel('Hari Libur')
-    ax.set_ylabel('Jumlah Penyewaan')
-    ax.set_xticklabels(['Biasa', 'Libur'], rotation=0)
-    st.pyplot(fig)
+    st.bar_chart(holiday_counts)  # Menggunakan Streamlit untuk grafik batang
 
 # Page 4: Proporsi Pengguna
 elif menu_choice == "Proporsi Pengguna":
     st.header("Proporsi Penyewaan oleh Pengguna Terdaftar dan Kasual")
     user_counts = main_data[['casual', 'registered']].sum()
-
-    fig, ax = plt.subplots(figsize=(8, 6))
-    user_counts.plot(kind='pie', autopct='%1.1f%%', startangle=90, colors=['lightcoral', 'lightgreen'], ax=ax)
-    ax.set_title('Proporsi Penyewaan oleh Pengguna Terdaftar dan Kasual')
-    ax.set_ylabel('')  # Menghapus label y
-    st.pyplot(fig)
+    st.write(user_counts)  # Menampilkan data tabular
 
 # Footer
 st.sidebar.markdown("---")
