@@ -1,40 +1,54 @@
-# Bike Sharing Dashboard 🚴‍♂️✨
+# Dashboard Proyek Analisis Data
 
-Dashboard ini dibangun menggunakan **Streamlit** untuk menampilkan visualisasi dan analisis data penyewaan sepeda. Dashboard ini menggunakan dataset `main_data.csv` yang merupakan hasil penggabungan dari `day.csv` dan `hour.csv`.
+## Deskripsi Proyek
 
-## Fitur Dashboard
-- Visualisasi jumlah penyewaan sepeda berdasarkan jam, hari, dan cuaca.
-- Grafik interaktif untuk mengeksplorasi tren penyewaan.
-- Analisis RFM (Recency, Frequency, Monetary) untuk mengidentifikasi pelanggan terbaik.
-- Analisis dan prediksi jumlah penyewaan sepeda.
+Proyek ini merupakan sebuah dashboard interaktif yang dibangun menggunakan Python dan Streamlit. Dashboard ini memungkinkan pengguna untuk mengeksplorasi data, menampilkan visualisasi, dan memberikan insight utama dari data secara dinamis. Data diolah dan divisualisasikan dalam dashboard yang sudah terintegrasi untuk memudahkan pengguna dalam memahami hasil analisis.
 
-## Prasyarat
-Pastikan Anda memiliki beberapa hal berikut sebelum memulai:
+## Struktur Proyek
 
-1. **Python** versi 3.7 atau lebih baru.
-2. **Anaconda** (opsional) jika Anda ingin menggunakan environment terisolasi.
-3. File `main_data.csv` yang merupakan hasil gabungan dari dataset `day.csv` dan `hour.csv`.
+Struktur folder dan file utama dalam proyek ini adalah sebagai berikut:
 
-## Setup Environment dengan Anaconda
-Jika Anda menggunakan Anaconda, ikuti langkah-langkah berikut untuk menyiapkan environment:
+- `dashboard.py`: Skrip utama yang digunakan untuk menjalankan dashboard berbasis Streamlit.
+- `data/`: Folder ini berisi dataset tambahan berupa dua file, `day.csv` dan `hour.csv`, yang digunakan untuk analisis lebih lanjut.
+- `notebook.ipynb`: Notebook Jupyter yang digunakan untuk eksplorasi dan analisis data awal sebelum diimplementasikan dalam dashboard.
+- `README.md`: Berkas ini berisi dokumentasi proyek, termasuk cara instalasi dan penggunaan.
+- `requirements.txt`: Daftar pustaka Python yang diperlukan agar proyek ini dapat berjalan dengan baik.
+- `url.txt`: Berkas yang memuat URL untuk mengakses dashboard yang sudah dideploy.
 
-```bash
-conda create --name bike-sharing-dashboard python=3.9
-conda activate bike-sharing-dashboard
-pip install -r requirements.txt
+## Panduan Instalasi dari File ZIP
 
-Jika tidak menggunakan Anaconda, Anda dapat menyiapkan environment menggunakan pipenv atau venv:
+Jika Anda menggunakan file ZIP, ikuti langkah-langkah berikut:
 
-# Buat direktori proyek
-mkdir proyek_bike_sharing
-cd proyek_bike_sharing
+1. Ekstrak file ZIP melalui link https://github.com/sofiasfmld/Bike.
+2. Buka terminal dan arahkan ke direktori tempat file ZIP diekstrak.
+3. Instal dependensi dari `requirements.txt`:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-# Install pipenv jika belum ada
-pip install pipenv
+### Menjalankan Dashboard dari File ZIP
 
-# Buat environment dengan pipenv dan aktifkan
-pipenv install
-pipenv shell
+   Jalankan dashboard dengan perintah:
 
-# Install dependencies dari berkas requirements.txt
-pip install -r requirements.txt
+   ```bash
+   streamlit run dashboard.py
+   ```
+
+Anda juga dapat mengakses versi dashboard yang telah dideploy melalui tautan berikut:
+
+[Dashboard yang sudah dideploy](https://app-dashboard-mtuc8jpwft8exmrrvvdhz8.streamlit.app/)
+
+
+## Analisis di Jupyter Notebook
+
+File `notebook.ipynb` berisi analisis data awal dan eksplorasi yang dilakukan sebelum data diterapkan pada dashboard. Anda dapat membukanya dengan Jupyter Notebook atau JupyterLab untuk melihat detail analisis yang telah dilakukan.
+
+## Dependensi
+
+Proyek ini menggunakan pustaka Python berikut:
+
+- `matplotlib`
+- `pandas`
+- `numpy`
+- `seaborn`
+- `streamlit`
